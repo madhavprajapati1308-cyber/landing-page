@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeKitch - Kitchen & Bathroom Essentials | Shop Now!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1580395203943-d739dd7cf5f3?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=octavian-dan-craciun-P1q7A4WXutA-unsplash.jpg&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* Products */
+        .products {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 20px 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🏠 HomeKitch</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#kitchen">Kitchen</a></li>
+                <li><a href="#bathroom">Bathroom</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#features">Why Us</a></li>
+            </ul>
+            <div class="cart-icon">🛒 <span style="position:absolute;top:-8px;right:-8px;background:#e74c3c;color:white;border-radius:50%;width:20px;height:20px;font-size:0.8rem;display:flex;align-items:center;justify-content:center;">3</span></div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Everything for Your Home</h1>
+        <p>Premium Kitchen & Bathroom Essentials at Unbeatable Prices. Free Shipping on orders over $50!</p>
+        <div class="cta-buttons">
+            <a href="#products" class="btn btn-primary">Shop Now</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1537084278693-d597e79f2939?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=kristian-ryan-alimon-sHGbZqv8o9g-unsplash.jpg&w=800&q=80" alt="Kitchen Essentials">
+                <div class="category-info">
+                    <h3>🍳 Kitchen Essentials</h3>
+                    <p>Cookware, utensils, appliances & more</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.pexels.com/photos/12859723/pexels-photo-12859723.jpeg?cs=srgb&dl=pexels-carlos-tigsi-272681405-12859723.jpg&fm=jpg&_gl=1*1nyfjq7*_ga*MjA1MDUwMDY4LjE3NzU0ODQ5NDU.*_ga_8JE65Q40S6*czE3NzU0ODQ5NDQkbzEkZzEkdDE3NzU0ODQ5NjAkajQ0JGwwJGgw&w=800&q=80" alt="Bathroom Essentials">
+                <div class="category-info">
+                    <h3>🚿 Bathroom Essentials</h3>
+                    <p>Towels, organizers, accessories & more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1688399008531-488925537d02?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=sternsteiger-germany-alJPj7cmwYk-unsplash.jpg&w=800&q=80" alt="Non-Stick Frying Pan">
+                <div class="product-info">
+                    <h3 class="product-title">Non-Stick Frying Pan</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+            A durable non-stick fry pan with even heat distribution, making cooking effortless and healthier. Perfect for everyday use, it ensures easy cleaning and excellent food release.
+        </p>
+                    <div class="product-price">$29.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (1,234)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1696346225346-7559c4ac8fd7?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=the-silvertex-Ty5j7iC_IOk-unsplash.jpg&w=800&q=80" alt="Premium towel set">
+                <div class="product-info">
+                    <h3 class="product-title">Premium Towel Set</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+           Ultra-soft, highly absorbent premium towels designed for comfort and durability, providing a luxurious feel while ensuring quick drying and long-lasting freshness.
+        </p>
+                    <div class="product-price">$39.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.9 (987)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1569880495859-6655f88fab3e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=arina-ertman-lNY-q1HDHJk-unsplash.jpg&w=800&q=80" alt="Steel utensil set">
+                <div class="product-info">
+                    <h3 class="product-title">Steel Utensil Set</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+            Premium stainless steel utensils with a sleek, polished finish, offering durability, corrosion resistance, and a modern elegant look perfect for everyday and professional use.
+        </p>
+                    <div class="product-price">$24.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.7 (2,156)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1722942634411-0d521bab9b9d?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=lisa-anna-DZ1_T2RcK24-unsplash.jpg&w=800&q=80" alt="Shower Organizer">
+                <div class="product-info">
+                    <h3 class="product-title">Shower Organizer</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+            A sleek and modern shower setup designed for comfort and convenience, offering smooth water flow, adjustable features, and a clean aesthetic to enhance your daily bathing experience.
+        </p>
+                    <div class="product-price">$19.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.6 (845)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1589071634465-75d7ce737fa8?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=cooker-king-ez_4zOudMoA-unsplash.jpg&w=800&q=80" alt="Knife Set">
+                <div class="product-info">
+                    <h3 class="product-title">Professional Knife Set</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+            A high-quality professional knife set crafted for precision and durability, featuring sharp blades and ergonomic handles, ideal for efficient cutting, chopping, and enhancing your kitchen performance.
+        </p>
+                    <div class="product-price">$49.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.9 (1,567)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://images.unsplash.com/photo-1687526360728-f1af24aac201?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=tai-ngo-LGXkajRIda4-unsplash.jpg&w=800&q=80" alt="Bath Mat">
+                <div class="product-info">
+                    <h3 class="product-title">Anti-Slip Bath Mat</h3>
+                    <!-- Product Description -->
+        <p class="product-description">
+            A soft, anti-skid bath mat that provides safety and comfort. Its quick-drying fabric and strong grip help prevent slips while adding a neat, cozy touch to your bathroom.
+        </p>
+                    <div class="product-price">$16.99</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (1,234)</div>
+                    <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose HomeKitch?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>Orders over $50 ship free anywhere!</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔄</div>
+                <h3>30-Day Returns</h3>
+                <p>Easy returns, no questions asked</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <h3>Secure Checkout</h3>
+                <p>100% safe and encrypted payments</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⭐</div>
+                <h3>Top Quality</h3>
+                <p>Premium products you can trust</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>🏠 HomeKitch</h3>
+                <p>Your one-stop shop for kitchen & bathroom essentials. Quality products at great prices!</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li><a href="#" style="color:#bdc3c7;">Kitchen</a></li>
+                    <li><a href="#" style="color:#bdc3c7;">Bathroom</a></li>
+                    <li><a href="#" style="color:#bdc3c7;">About</a></li>
+                    <li><a href="#" style="color:#bdc3c7;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <p>📧 support@homekitch.com<br>📞 1-800-HOMEKITCH</p>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <div style="font-size:1.5rem;">
+                    📘 Facebook | 📸 Instagram | 🐦 Twitter
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HomeKitch. All rights reserved. | Made with ❤️ for your home</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.textContent = 'Added! 🎉';
+                this.style.background = '#27ae60';
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.background = '#e74c3c';
+                }, 2000);
+            });
+        });
+
+        // Cart counter animation
+        const cartIcon = document.querySelector('.cart-icon span');
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                let count = parseInt(cartIcon.textContent);
+                cartIcon.textContent = count + 1;
